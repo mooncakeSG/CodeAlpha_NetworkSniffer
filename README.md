@@ -1,22 +1,46 @@
-# Basic Network Sniffer with Python
+# Enhanced Network Sniffer - Inspired by Above
 
-A powerful and user-friendly network packet sniffer built with Python and Scapy. Capture and analyze live network traffic to understand IP addresses, protocols, ports, and payloads.
+A comprehensive network security analysis tool built with Python and Scapy, inspired by the [Above](https://github.com/casterbyte/Above.git) project. This enhanced sniffer provides advanced protocol detection, security analysis, real-time monitoring, and threat detection capabilities.
 
 ## 🎯 Features
 
-- **Real-time packet capture** with detailed analysis
-- **Multiple protocol support**: TCP, UDP, ICMP, and more
-- **Flexible filtering** using BPF (Berkeley Packet Filter) syntax
-- **GUI interface** for easy visualization and interaction
-- **Command-line interface** for automation and scripting
-- **PCAP file export** for further analysis in Wireshark
-- **Statistics tracking** with protocol breakdown
-- **Cross-platform compatibility** (Windows, Linux, macOS)
+### 🔍 Advanced Protocol Detection
+- **20+ Protocol Support**: TCP, UDP, ICMP, HTTP, HTTPS, DNS, DHCP, FTP, SSH, SMTP, POP3, IMAP, SNMP, NTP, TELNET, ARP, VLAN, IPv4, IPv6, TLS/SSL
+- **Real-time Protocol Analysis**: Instant protocol identification as packets arrive
+- **Application Layer Detection**: HTTP, FTP, SMTP, and other application protocols
+- **Port-based Protocol Mapping**: Automatic protocol detection based on common ports
+
+### 🛡️ Security Analysis & Threat Detection
+- **Security Pattern Matching**: SQL injection, XSS, path traversal, command injection detection
+- **Port Scan Detection**: Automatic detection of scanning activities
+- **TCP Flag Analysis**: NULL, FIN, SYN scan detection
+- **ICMP Attack Detection**: Ping of death and other ICMP-based attacks
+- **Real-time Security Alerts**: Immediate notification of security threats
+
+### 📊 Comprehensive Analytics
+- **Real-time Statistics**: Protocol distribution, top talkers, port analysis
+- **Connection Tracking**: Monitor connection states and behaviors
+- **Packet Size Analysis**: Performance and bandwidth monitoring
+- **Network Topology Mapping**: Identify network structure and relationships
+
+### 🖥️ Enhanced User Interface
+- **Multi-tabbed GUI**: Capture, Analysis, Security, and Monitoring tabs
+- **Interactive Charts**: Real-time updating visualizations with matplotlib
+- **Advanced Packet Display**: Detailed packet information with protocol detection
+- **Security Dashboard**: Dedicated security monitoring and alerting interface
+
+### ⚡ Performance & Usability
+- **Flexible Filtering**: Advanced BPF filter support
+- **PCAP Export**: Save captures for further analysis
+- **Cross-platform Compatibility**: Windows, Linux, macOS
+- **Command-line & GUI**: Both interfaces for different use cases
 
 ## 🧰 Requirements
 
 - Python 3.7 or higher
 - Scapy library
+- Matplotlib (for GUI visualizations)
+- Npcap/WinPcap (for Windows packet capture)
 - Administrator/root privileges (for packet capture)
 
 ## 📦 Installation
@@ -32,6 +56,11 @@ A powerful and user-friendly network packet sniffer built with Python and Scapy.
    pip install -r requirements.txt
    ```
 
+3. **Install Npcap (Windows users):**
+   - Download from [https://npcap.com/#download](https://npcap.com/#download)
+   - Run installer as Administrator
+   - Restart computer after installation
+
 3. **Run with administrator privileges:**
    - **Windows**: Run Command Prompt or PowerShell as Administrator
    - **Linux/macOS**: Use `sudo` or run as root
@@ -43,22 +72,25 @@ A powerful and user-friendly network packet sniffer built with Python and Scapy.
 #### Basic Usage
 ```bash
 # Capture 20 packets on default interface
-python sniffer.py -c 20
+python enhanced_sniffer.py -c 20
 
-# Capture TCP packets only
-python sniffer.py -f "tcp" -c 50
+# Capture TCP packets only with verbose output
+python enhanced_sniffer.py -f "tcp" -c 50 -v
 
 # Capture UDP packets on port 53 (DNS)
-python sniffer.py -f "udp port 53" -c 100
+python enhanced_sniffer.py -f "udp port 53" -c 100
 
 # Capture all traffic on specific interface
-python sniffer.py -i "Wi-Fi" -c 0
+python enhanced_sniffer.py -i "Wi-Fi" -c 0
 
-# Save captured packets to PCAP file
-python sniffer.py -c 100 -s "capture.pcap"
+# Save captured packets to PCAP file with security analysis
+python enhanced_sniffer.py -c 100 -s "capture.pcap" -v
 
 # List available interfaces
-python sniffer.py -l
+python enhanced_sniffer.py -l
+
+# Run the comprehensive demo
+python demo_enhanced_sniffer.py
 ```
 
 #### Advanced Filtering Examples
@@ -82,21 +114,24 @@ python sniffer.py -f "not broadcast"
 python sniffer.py -f "icmp"
 ```
 
-### Graphical User Interface
+### Enhanced Graphical User Interface
 
-Launch the GUI version for an interactive experience:
+Launch the enhanced GUI version for a comprehensive interactive experience:
 
 ```bash
-python sniffer_gui.py
+python enhanced_gui.py
 ```
 
-**GUI Features:**
-- Real-time packet display in table format
-- Interactive packet details viewer
-- Live statistics and protocol breakdown
-- Easy interface selection
-- One-click PCAP export
-- Clear display functionality
+**Enhanced GUI Features:**
+- **Multi-tabbed Interface**: Capture, Analysis, Security, and Monitoring tabs
+- **Real-time Protocol Detection**: Instant protocol identification and display
+- **Interactive Charts**: Live-updating visualizations with matplotlib
+- **Security Dashboard**: Dedicated security monitoring and alerting
+- **Advanced Packet Analysis**: Detailed packet information with protocol detection
+- **Real-time Statistics**: Protocol distribution, top talkers, port analysis
+- **Security Alerts**: Real-time threat detection and notification
+- **Monitoring Console**: Live network activity monitoring
+- **Export Capabilities**: PCAP, statistics, and custom exports
 
 ## 📊 Output Examples
 
@@ -170,15 +205,19 @@ The GUI provides a clean, organized view of captured packets with:
 
 ```
 CodeAlpha_NetworkSniffer/
-├── sniffer.py          # Command-line network sniffer
-├── sniffer_gui.py      # GUI version of the sniffer
-├── requirements.txt    # Python dependencies
-├── README.md          # This file
-├── screenshots/       # GUI screenshots and examples
-│   └── sample_output.png
-└── examples/          # Example captures and scripts
-    ├── http_capture.pcap
-    └── dns_capture.pcap
+├── enhanced_sniffer.py      # Enhanced command-line sniffer with security analysis
+├── enhanced_gui.py          # Advanced GUI with multi-tabbed interface
+├── protocol_detector.py     # Comprehensive protocol detection engine
+├── sniffer.py              # Basic command-line network sniffer
+├── sniffer_gui.py          # Basic GUI version
+├── demo_enhanced_sniffer.py # Comprehensive feature demonstration
+├── test_installation.py    # Installation verification script
+├── requirements.txt        # Python dependencies
+├── README.md              # This file
+├── screenshots/           # GUI screenshots and examples
+└── examples/              # Example captures and scripts
+    ├── simple_sniffer.py   # Basic sniffer example
+    └── advanced_sniffer.py # Advanced protocol analysis example
 ```
 
 ## 🛠️ Development
